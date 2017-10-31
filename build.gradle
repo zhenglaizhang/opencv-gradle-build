@@ -15,7 +15,7 @@ targetCompatibility = 1.6
 
 def date = new Date()
 def formattedDate = date.format('yyMMdd')
-version = "3.2.0-${formattedDate}"
+version = "3.3.0-${formattedDate}"
 
 def cmakeBuildDirectory = Paths.get(projectDir.canonicalPath, "build")
 def jarName = "${project.name}-${version.replace(".", "").replace("-" + formattedDate, "")}.jar"
@@ -60,7 +60,7 @@ task cmake(type: Exec) {
     else
     {
         executable = 'cmake'
-        args = ['-DCMAKE_BUILD_TYPE=RELEASE', '-DBUILD_SHARED_LIBS=OFF', '-DWITH_CUDA=OFF', '-DWITH_FFMPEG=OFF', '-DWITH_OPENEXR=ON', '-DWITH_WEBP=ON', '-DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules', '-DBUILD_opencv_hdf=OFF', '../opencv']
+        args = ['-DCMAKE_BUILD_TYPE=RELEASE', '-DBUILD_SHARED_LIBS=OFF', '-DBUILD_opencv_python2=Off', '-DBUILD_opencv_python3=Off',  '-DBUILD_opencv_python=OFF', '-DWITH_CUDA=OFF', '-DBUILD_opencv_hdf=OFF', '../opencv']
     }
 }
 
